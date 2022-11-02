@@ -1,0 +1,29 @@
+:root {
+    --card-width:156px;
+    --card-height: 220px;
+
+}
+
+.card-placement{
+    margin-top : 30px;
+    position: relative;
+
+}
+
+.cards{
+    position :absolute ;
+    height: var( --card-height);
+    width: var( --card-width);
+}
+
+.card-inside{
+    position : relative;
+    width: 100%;
+    height: 100%;
+}
+
+.card-exterior, .card-interior {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+}
