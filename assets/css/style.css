@@ -11,7 +11,7 @@
 }
 
 .cards{
-    position :absolute ;
+    position:absolute ;
     height: var( --card-height);
     width: var( --card-width);
     perspective: 1000px;
@@ -44,6 +44,6 @@
     transform : rotateY(180deg);
 }
 
-.card:hover .card-inside{
+.cards:hover .card-inside{
     transform : rotateY(180deg);
 }
