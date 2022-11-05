@@ -14,81 +14,81 @@ const cardObjectDefined = [{
         id: 4,
         imagePath: '/images/Queen-ofDiamonds.PNG'
     }
-]
+];
 
-const cardBackImgPath = '/images/card-back-Blue.png'
-const cardPlacementElem = document.querySelector('.card-placement')
+const cardBackImgPath = '/images/card-back-Blue.png';
+const cardPlacementElem = document.querySelector('.card-placement');
 
 
 function createCard(cardItem) {
     //Div Elements that make up a card 
-    const cardElem = createElement('div')
-    const cardInnerElem = createElement('div')
-    const cardFrontElem = createElement('div')
-    const cardBackElem = createElement('div')
+    const cardElem = createElement('div');
+    const cardInnerElem = createElement('div');
+    const cardFrontElem = createElement('div');
+    const cardBackElem = createElement('div');
 
     //create front and back image elements for cards 
-    const cardFrontImg = createElement('img')
-    const cardBackImg = createElement('img')
+    const cardFrontImg = createElement('img');
+    const cardBackImg = createElement('img');
 
     //add class and id to card element
-    addClassToElement(cardElem, 'card')
-    addIdToElement(cardElem, cardItem.id)
+    addClassToElement(cardElem, 'card');
+    addIdToElement(cardElem, cardItem.id);
 
     //add class to inner card element 
-    addClassToElement(cardInnerElem, 'card-inner')
+    addClassToElement(cardInnerElem, 'card-inner');
 
     //add class to front card element
-    addClassToElement(cardFrontElem, 'card-front')
+    addClassToElement(cardFrontElem, 'card-front');
 
     //add class to front card element
-    addClassToElement(cardBackElem, 'card-back')
+    addClassToElement(cardBackElem, 'card-back');
 
     //add src attribute and appropriate vlaues to img element of back of card 
-    addSrcToImageElem(cardBackElem, cardBackImgPath)
+    addSrcToImageElem(cardBackElem, cardBackImgPath);
 
     //add src attribute and appropriate vlaues to img element of front of card 
-    addSrcToImageElem(cardFrontElem, cardItem.ImgPath)
+    addSrcToImageElem(cardFrontElem, cardItem.ImgPath);
 
     //assign class to back Image element *bug
-    addClassToElement(cardBackElem, 'card-img')
+    addClassToElement(cardBackElem, 'card-img');
 
     //assign class to front Image element *bug
-    addClassToElement(cardFrontElem, 'card-img')
+    addClassToElement(cardFrontElem, 'card-img');
 
     //add front element as child  element to front card element 
-    addChildElement(cardFrontElem, cardFrontImg)
+    addChildElement(cardFrontElem, cardFrontImg);
 
     //add back element as child  element to back card element 
-    addChildElement(cardBackElem, cardBackImg)
+    addChildElement(cardBackElem, cardBackImg);
 
     //add front element as child  element to front inner element 
-    addChildElement(cardInnerElem, cardFrontElem)
+    addChildElement(cardInnerElem, cardFrontElem);
 
     //add back element as child  element to back inner element 
-    addChildElement(cardInnerElem, cardBackElem)
+    addChildElement(cardInnerElem, cardBackElem);
 
     //add inner card element as child element to card element 
-    addChildElement(cardElem, cardInnerElem)
+    addChildElement(cardElem, cardInnerElem);
 }
 
 
 function createElement(elemType) {
-    return document.createElement(elemType)
+    return document.createElement(elemType);
 }
 
 function addClassToElement(elem, className) {
-    elem.classList.add(className)
+    elem.classList.add(className);
 }
 
 function addIdToElement(elem, id) {
-    elem.id = id
+    elem.id = id;
 }
 
 function addSrcToImageElem(imgElem, src) {
-    imgElem.src = src
+    imgElem.src = src;
 }
 
 function addChildElement(parenrElem, childElem) {
-    parentElem.appendChild(childElem)
+    parentElem.appendChild(childElem);
 }
