@@ -13,6 +13,7 @@ main{
     height: 55%;
     display: flex;
     justify-content:center;
+    border: 1px solid black;
 }
 
 .card-placement{
@@ -24,7 +25,7 @@ main{
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "1 2"
                         "3 4";
-
+    border: 1px solid black;
 }
 
 .cards{
@@ -34,6 +35,27 @@ main{
     perspective: 1000px;
     cursor: pointer;
 }
+
+.card-1{
+    grid-area: 1;
+    border: 1px solid black;
+}
+
+.card-2{
+    grid-area: 2;
+    border: 1px solid black;
+}
+
+.card-2{
+    grid-area: 3;
+    border: 1px solid black;
+}
+
+.card-3{
+    grid-area: 4;
+    border: 1px solid black;
+}
+
 
 .card-inside{
     position : relative;
