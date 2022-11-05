@@ -1,7 +1,8 @@
 :root {
     --card-width:156px;
     --card-height: 220px;
-
+    --num-cards:4;
+    --card-horizontal-space: 100px;
 }
 
 body{
@@ -16,6 +17,13 @@ main{
 
 .card-placement{
     position: relative;
+    height: 100%;
+    width:calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space) );
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "1 2"
+                        "3 4";
 
 }
 
