@@ -16,7 +16,15 @@ function createCard(cardItem) {
     const cardFrontImg = createElement('img')
     const cardBackImg = createElement('img')
 
+   //add class and id to card element
     addClassToElement(cardElem,'card')
+    addIdToElement(cardElem, cardItem.id)
+
+    //add class to inner card element 
+    addClassToElement(cardInnerElem , 'card-inner')
+
+    //add class to front card element
+    addClassToElement(cardFrontElem, 'card-front')
 } 
 
 function createElement(elemType){
