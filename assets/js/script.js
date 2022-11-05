@@ -12,8 +12,10 @@ function createCard(cardItem) {
     const cardFrontElem = createElement('div')
     const cardBackElem =  createElement('div')
 
-    
-}
+   //create front and back image elements for cards 
+    const cardFrontImg = createElement('img')
+    const cardBackImg = createElement('img')
+} 
 
 function createElement(elemType){
     return document.createElement(elemType)
