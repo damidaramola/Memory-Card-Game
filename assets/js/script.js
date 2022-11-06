@@ -19,11 +19,24 @@ const cardObjectDefined = [{
 const cardBackImgPath = 'assets/images/card-back-Blue.png';
 const cardPlacementElem = document.querySelector('.card-placement');
 
-createCards()
+let cards = [];
+
+const playGameButtonElem = document.getElementById('playGame');
+
+loadGame();
+function loadGame(){
+    createCards();
+    cards= document.querySelectorAll('.card');
+    playGameButtonElem.addEventListener('click',()=>startGame());
+}
+
+function startGame() {
+alert('');
+}
 
 function createCards() {
     cardObjectDefined.forEach((cardItem) => {
-        createCard(cardItem)
+        createCard(cardItem);
     })
 }
 
