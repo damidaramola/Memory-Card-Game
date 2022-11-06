@@ -4,15 +4,15 @@ const cardObjectDefined = [{
     },
     {
         id: 2,
-        imagePath: '/images/Jack-of-hearts.PNG'
+        imagePath: 'assets/images/Jack-of-hearts.PNG'
     },
     {
         id: 3,
-        imagePath: '/images/Ace-of-Spades.PNG'
+        imagePath: 'assets/images/Ace-of-Spades.PNG'
     },
     {
         id: 4,
-        imagePath: '/images/Queen-ofDiamonds.PNG'
+        imagePath: 'assets/images/Queen-ofDiamonds.PNG'
     }
 ];
 
@@ -112,7 +112,7 @@ function addCardToGridCell(card) {
 
 }
 
-function mapCardIdToGridCell() {
+function mapCardIdToGridCell(card) {
     if (card.id == 1) {
         return '.card-1';
     } else if (card.id == 2) {
