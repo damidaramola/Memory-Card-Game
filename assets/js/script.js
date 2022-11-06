@@ -1,5 +1,4 @@
-const cardObjectDefined = [
-    {
+const cardObjectDefined = [{
         id: 1,
         imagePath: 'assets/images/king-of-clubs.PNG'
     },
@@ -20,6 +19,13 @@ const cardObjectDefined = [
 const cardBackImgPath = '/images/card-back-Blue.png';
 const cardPlacementElem = document.querySelector('.card-placement');
 
+createCards()
+
+function createCards() {
+    cardObjectDefined.forEach((cardItem) => {
+        createCard(cardItem)
+    })
+}
 
 function createCard(cardItem) {
     //Div Elements that make up a card 
@@ -73,7 +79,7 @@ function createCard(cardItem) {
     addChildElement(cardElem, cardInnerElem);
 
     //add card element as child element to appropriate grid cell
-    
+    addCardToGridCell(cardElem);
 }
 
 
@@ -98,19 +104,22 @@ function addChildElement(parentElem, childElem) {
 }
 
 
- function addCardToGridCell(card){
- const cardPositionClassName = mapCardIdToGridCell(card) ;
-const cardPosElem = document.querySelector(cardPositionClassName);
+function addCardToGridCell(card) {
+    const cardPositionClassName = mapCardIdToGridCell(card);
+    const cardPosElem = document.querySelector(cardPositionClassName);
 
-addChildElement(cardPosElem , card);
+    addChildElement(cardPosElem, card);
 
 }
 
-function mapCardIdToGridCell(){
-    if(card.id == 1){
-        return '.card-1'
-    }
-    else if(card.id == 2) {
-        return '.card-2'
+function mapCardIdToGridCell() {
+    if (card.id == 1) {
+        return '.card-1';
+    } else if (card.id == 2) {
+        return '.card-2';
+    } else if (card.id == 3) {
+        return '.card-3';
+    } else if (card.id == 4) {
+        return '.card-4';
     }
 }
