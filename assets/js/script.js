@@ -1,6 +1,7 @@
-const cardObjectDefined = [{
+const cardObjectDefined = [
+    {
         id: 1,
-        imagePath: '/images/king-of-clubs.PNG'
+        imagePath: 'assets/images/king-of-clubs.PNG'
     },
     {
         id: 2,
@@ -70,6 +71,9 @@ function createCard(cardItem) {
 
     //add inner card element as child element to card element 
     addChildElement(cardElem, cardInnerElem);
+
+    //add card element as child element to appropriate grid cell
+    
 }
 
 
@@ -89,6 +93,24 @@ function addSrcToImageElem(imgElem, src) {
     imgElem.src = src;
 }
 
-function addChildElement(parenrElem, childElem) {
+function addChildElement(parentElem, childElem) {
     parentElem.appendChild(childElem);
+}
+
+
+ function addCardToGridCell(card){
+ const cardPositionClassName = mapCardIdToGridCell(card) ;
+const cardPosElem = document.querySelector(cardPositionClassName);
+
+addChildElement(cardPosElem , card);
+
+}
+
+function mapCardIdToGridCell(){
+    if(card.id==1){
+        return '.card-1'
+    }
+    else if(card.id==2) {
+        return '.card-2'
+    }
 }
