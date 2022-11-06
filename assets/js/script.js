@@ -46,16 +46,16 @@ function createCard(cardItem) {
     addClassToElement(cardBackElem, 'card-back');
 
     //add src attribute and appropriate vlaues to img element of back of card 
-    addSrcToImageElem(cardBackElem, cardBackImgPath);
+    addSrcToImageElem(cardBackImg, cardBackImgPath);
 
     //add src attribute and appropriate vlaues to img element of front of card 
-    addSrcToImageElem(cardFrontElem, cardItem.ImgPath);
+    addSrcToImageElem(cardFrontImg, cardItem.imagePath);
 
-    //assign class to back Image element *bug
-    addClassToElement(cardBackElem, 'card-img');
+    //assign class to back Image element *bug fixed
+    addClassToElement(cardBackImg, 'card-img');
 
-    //assign class to front Image element *bug
-    addClassToElement(cardFrontElem, 'card-img');
+    //assign class to front Image element *bug fixed
+    addClassToElement(cardFrontImg, 'card-img');
 
     //add front element as child  element to front card element 
     addChildElement(cardFrontElem, cardFrontImg);
@@ -107,10 +107,10 @@ addChildElement(cardPosElem , card);
 }
 
 function mapCardIdToGridCell(){
-    if(card.id==1){
+    if(card.id == 1){
         return '.card-1'
     }
-    else if(card.id==2) {
+    else if(card.id == 2) {
         return '.card-2'
     }
 }
