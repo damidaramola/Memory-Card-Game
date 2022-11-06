@@ -24,14 +24,28 @@ let cards = [];
 const playGameButtonElem = document.getElementById('playGame');
 
 loadGame();
-function loadGame(){
+
+function loadGame() {
     createCards();
-    cards= document.querySelectorAll('.card');
-    playGameButtonElem.addEventListener('click',()=>startGame());
+    cards = document.querySelectorAll('.card');
+    playGameButtonElem.addEventListener('click', () => startGame());
 }
 
 function startGame() {
-alert('');
+    initializeNewGame();
+    startRound();
+}
+
+function initializeNewGame(){
+
+}
+
+function startRound() {
+
+}
+
+function initializeNewRound(){
+
 }
 
 function createCards() {
