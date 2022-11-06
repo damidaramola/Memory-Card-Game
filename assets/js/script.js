@@ -42,7 +42,7 @@ function createCard(cardItem) {
     addClassToElement(cardElem, 'card');
     addIdToElement(cardElem, cardItem.id);
 
-    /*//add class to inner card element 
+    //add class to inner card element 
     addClassToElement(cardInnerElem, 'card-inner');
 
     //add class to front card element
@@ -50,7 +50,7 @@ function createCard(cardItem) {
 
     //add class to front card element
     addClassToElement(cardBackElem, 'card-back');
-*/
+
     //add src attribute and appropriate vlaues to img element of back of card 
     addSrcToImageElem(cardBackImg, cardBackImgPath);
 
