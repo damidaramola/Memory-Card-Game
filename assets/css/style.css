@@ -53,6 +53,11 @@ main {
     background-color: red;
 }
 
+.card-1, .card-2 , .card-3 ,.card-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .card-inside {
     position: relative;
