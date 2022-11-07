@@ -1,6 +1,6 @@
 const cardObjectDefined = [{
     id: 1,
-    imagePath: 'assets/images/king-of-clubs.PNG'
+imagePath: 'assets/images/king-of-clubs.PNG'
 },
 {
     id: 2,
@@ -17,11 +17,12 @@ const cardObjectDefined = [{
 ];
 
 const cardBackImgPath = 'assets/images/card-back-Blue.png';
-const cardPlacementElem = document.querySelector('.card-placement');
 
 let cards = [];
 
 const playGameButtonElem = document.getElementById('playGame');
+const cardPlacementElem = document.querySelector('.card-placement');
+
 
 const collapsedGridAreaTemplate = '"a a" "a a"';
 const cardCollectionCellClass = ".card-1";
