@@ -27,6 +27,9 @@ const collapsedGridAreaTemplate = '"a a" "a a"';
 const cardCollectionCellClass = ".card-1";
 
 const numCards = cardObjectDefined.length;
+
+let cardPositions = []
+
 loadGame();
 
 function loadGame() {
@@ -113,16 +116,21 @@ function shuffleCards(){
 function createCards() {
     cardObjectDefined.forEach((cardItem) => {
         createCard(cardItem);
-    })
+    });
 }
 
 function  randomizeCardPositions(){
     const random1 = Math.floor(Math.random() * numCards) + 1;
     const random2 =  Math.floor(Math.random() * numCards) + 1;
-    
+  
+    const temp = cardPositions[random1 = 1];
+    cardPositions[random1 -1] = cardPositions[random2 -1];
+    cardPositions[random2 -1] = temp;
+
 }
 
 function createCard(cardItem) {
+    
     //Div Elements that make up a card 
     const cardElem = createElement('div');
     const cardInnerElem = createElement('div');
