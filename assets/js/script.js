@@ -183,8 +183,13 @@ function createCard(cardItem) {
 
     //add card element as child element to appropriate grid cell
     addCardToGridCell(cardElem);
+
+    initializeCardPositions(cardElem);
 }
 
+function initializeCardPositions(card){
+    cardPositions.push(card.id)
+}
 
 function createElement(elemType) {
     return document.createElement(elemType);
