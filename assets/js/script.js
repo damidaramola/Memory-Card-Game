@@ -4,11 +4,11 @@ const cardObjectDefined = [{
 },
 {
     id: 2,
-    imagePath: 'assets/images/Jack-of-hearts.PNG'
+    imagePath: 'assets/images/Ace-of-Spades.PNG'
 },
 {
     id: 3,
-    imagePath: 'assets/images/Ace-of-Spades.PNG'
+    imagePath: 'assets/images/joker-card.PNG'
 },
 {
     id: 4,
