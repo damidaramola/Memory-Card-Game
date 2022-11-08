@@ -46,7 +46,7 @@ const roundElem = document.querySelector('.round');
 
 const winColor = "green";
 const loseColor = "red";
-const primaryColor ="black"
+const primaryColor ="black";
 
 let roundNum = 0;
 let maxRounds = 4 ;
@@ -57,34 +57,34 @@ loadGame();
 
 function chooseCard(card){
   if(canChooseCard()){
-    evaluateCardChoice(card)
-    saveGameObjectToLocalStorage(score, roundNum)
-    flipCard(card,false)
+    evaluateCardChoice(card);
+    saveGameObjectToLocalStorage(score, roundNum);
+    flipCard(card,false);
 
     setTimeout(() => {
-        flipCards(false)
-        updateStatusElement(currentGameStatusElem,"block", primaryColor,"Card positions revealed")
+        flipCards(false);
+        updateStatusElement(currentGameStatusElem,"block", primaryColor,"Card positions revealed");
 
-        endRound()
+        endRound();
 
     },3000)
-    cardsRevealed = true
+    cardsRevealed = true;
   }
 }
 
 function calculateScoreToAdd(roundNum){
     if(roundNum == 1){
-        return 100
+        return 100;
     }
     else if(roundNum ==2 )
     {
-     return 50
+     return 50;
     }
     else if(roundNum == 3){
-    return 25
+    return 25;
     }
   else{
-    return 10
+    return 10;
   }
 }
 
@@ -109,11 +109,11 @@ function updateStatusElement(elem , display, color ,innerHTML){
 function outputChoiceFeedBack(hit){
     if(hit)
     {
-   updateStatusElement(currentGameStatusElem),"block",winColor, "Correct! Nice Guess!"
+   updateStatusElement(currentGameStatusElem),"block",winColor, "Correct! Nice Guess!";
     }
     else
     {
-    updateStatusElement(currentGameStatusElem, "block" , loseColor, "Wrong..Hard luck!")
+    updateStatusElement(currentGameStatusElem, "block" , loseColor, "Wrong..Hard luck!");
     }
 }
 
@@ -149,6 +149,11 @@ function initializeNewGame() {
   roundNum= 0;
 
   shufflingInProgress = false;
+  updateStatusElement(scoreContainerElem, "flex");
+  updateStatusElement(roundContainerElem, "flex");
+
+  updateStatusElement(scoreElem,"block",primaryColor,`Score <span class='badge'>${score}</span>`);
+updateStatusElement(roundElem,"block",primaryColor,`Round <span class='badge'>${roundNum}</span>`);
 }
 
 function startRound() {
@@ -166,7 +171,8 @@ function initializeNewRound() {
   shufflingInProgress = true;
   cardsRevealed = false;
 
-  updateStatusElement(currentGameStatusElem , "block", primaryColor, "Shuffling.." )
+  updateStatusElement(currentGameStatusElem , "block", primaryColor, "Shuffling.." );
+  updateStatusElement(roundElem , "block", primaryColor,  `Round <span class='badge'>${roundNum}</span>` );
 }
 
 function collectCards() {
