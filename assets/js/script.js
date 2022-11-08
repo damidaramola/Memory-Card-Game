@@ -56,6 +56,22 @@ let score =0;
 loadGame();
 
 
+function endRound() {
+    setTimeout(()=>{
+        if(roundNum == maxRounds)
+        {
+            gameOver();
+            return
+        }
+        else
+        {
+            startRound();
+        }
+    },3000);
+}
+ 
+
+
 
 function chooseCard(card){
   if(canChooseCard()){
