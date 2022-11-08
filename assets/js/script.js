@@ -39,10 +39,13 @@ let shufflingInProgress = false ;
 
 
 const currentGameStatusElem = document.querySelector('.current-status')
+const winColor = "green";
+const loseColor = "red";
+
 
 loadGame();
 
-function chooseCard(){
+function chooseCard(card){
   if(canChooseCard()){
     evaluateCardChoice(card)
     saveGameObjectToLocalStorage(score, roundNum)
@@ -57,6 +60,14 @@ function chooseCard(){
     },3000)
     cardsRevealed = true
   }
+}
+
+function updateStatusElement(elem , display, color ,innerHTML){
+    elem.style.display = display;
+    if(arguments.length > 2){
+        elem.style.color = color;
+        elem.innerHTML = innerHTML;
+    }
 }
 
 function outputChoiceFeedBack(hit){
