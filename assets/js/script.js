@@ -37,6 +37,9 @@ let gameInProgress = false ;
 let shufflingInProgress = false ;
  let cardsRevealed = false ;
 
+
+const currentGameStatusElem = document.querySelector('.current-status')
+
 loadGame();
 
 function chooseCard(){
