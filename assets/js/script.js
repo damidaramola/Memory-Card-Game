@@ -43,7 +43,7 @@ const winColor = "green";
 const loseColor = "red";
 
 let roundNum = 0;
-let maxRounds =4 ;
+let maxRounds = 4 ;
 let score =0;
 
 
@@ -139,7 +139,10 @@ function startGame() {
 }
 
 function initializeNewGame() {
+  score = 0;
+  roundNum= 0;
 
+  shufflingInProgress = false;
 }
 
 function startRound() {
@@ -150,7 +153,14 @@ function startRound() {
 }
 
 function initializeNewRound() {
+  roundNum++;
+  playGameButtonElem.disabled = true;
+  gameInProgress = true ;
+  
+  shufflingInProgress = true;
+  cardsRevealed = false;
 
+  updateStatusElement(currentGameStatusElem , "block", )
 }
 
 function collectCards() {
