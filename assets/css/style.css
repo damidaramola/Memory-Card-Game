@@ -13,7 +13,7 @@ main {
     height: 55%;
     display: flex;
     justify-content: center;
-    border: 1px solid black;
+    
 }
 
 .card-placement {
@@ -25,32 +25,32 @@ main {
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "a b"
                          "c d";
-        border: 1px solid black;
+       
 }
 
 
 .card-1 {
     grid-area: a;
-    border: 1px solid black;
-    background-color: yellow;
+   
+    /*background-color: yellow;*/
 }
 
 .card-2 {
     grid-area: b;
-    border: 1px solid black;
-    background-color: blue;
+  
+   /* background-color: blue;*/
 }
 
 .card-3 {
     grid-area: c;
-    border: 1px solid black;
-    background-color: green;
+  ;
+    /*background-color: green;*/
 }
 
 .card-4 {
     grid-area: d;
-    border: 1px solid black;
-    background-color: red;
+   
+   /* background-color: red;*/
 }
 
 .card-1, .card-2 , .card-3 ,.card-4 {

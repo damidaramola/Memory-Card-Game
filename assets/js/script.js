@@ -29,7 +29,7 @@ const cardCollectionCellClass = ".card-1";
 
 const numCards = cardObjectDefined.length;
 
-let cardPositions = []
+let cardPositions = [];
 
 loadGame();
 
@@ -50,9 +50,10 @@ function initializeNewGame() {
 }
 
 function startRound() {
-    initializeNewRound()
+    initializeNewRound();
     collectCards();
-    flipCards(true)
+    flipCards(true);
+    shuffleCards();
 }
 
 function initializeNewRound() {
@@ -73,7 +74,7 @@ function addCardsToGridAreaCell(cellPositionClassName) {
     const cellPositionElem = document.querySelector(cellPositionClassName);
 
     cards.forEach((card, index) => {
-        addChildElement(cellPositionElem, card)
+        addChildElement(cellPositionElem, card);
     });
 
 
@@ -93,9 +94,9 @@ function flipCard(card, flipToBack) {
 function flipCards(flipToBack) {
     cards.forEach((card, index) => {
         setTimeout(() => {
-            flipCard(card, flipToBack)
-        }, index * 100)
-    })
+            flipCard(card, flipToBack);
+        }, index * 100);
+    });
 }
 
 function shuffleCards() {
@@ -104,11 +105,11 @@ function shuffleCards() {
 
     function shuffle() {
 
-        randomizeCardPositions()
+        randomizeCardPositions();
 
         if (shuffleCount == 500) {
             clearInterval(id);
-            dealCards()
+            dealCards();
         } else {
             shuffleCount++;
         }
@@ -133,8 +134,9 @@ function randomizeCardPositions() {
 }
 
 function dealCards() {
-    addCardsToAppropriateCell()
+    addCardsToAppropriateCell();
     const areasTemplate = returnGridAreasMappedToCardPos();
+    transformGridArea(areasTemplate);
 }
 
 function returnGridAreasMappedToCardPos(){
@@ -169,7 +171,7 @@ function returnGridAreasMappedToCardPos(){
             secondPart = areas.substring(0, areas.length - 1);
         }
 
-    })
+    });
 
     return `"${firstPart}" "${secondPart}"`;
 
@@ -181,7 +183,7 @@ function returnGridAreasMappedToCardPos(){
 function addCardsToAppropriateCell() {
     cards.forEach((card) => {
         addCardToGridCell(card);
-    })
+    });
 }
 
 function createCard(cardItem) {
@@ -243,7 +245,7 @@ function createCard(cardItem) {
 }
 
 function initializeCardPositions(card) {
-    cardPositions.push(card.id)
+    cardPositions.push(card.id);
 }
 
 function createElement(elemType) {
