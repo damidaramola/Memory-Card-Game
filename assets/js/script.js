@@ -16,7 +16,7 @@ const cardObjectDefined = [{
     }
 ];
 
-
+const queenId = 4 ;
 
 const cardBackImgPath = 'assets/images/card-back-Blue.png';
 
@@ -57,7 +57,14 @@ function chooseCard(){
 }
 
 function evaluateCardChoice(card){
-
+  if(card.id == queenId){
+    updateScore();
+    outputChoiceFeedback(true);
+  }
+ else
+ {
+  outputChoiceFeedback(false);
+ }
 }
 
 function canChooseCard(){
