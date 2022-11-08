@@ -35,7 +35,7 @@ let cardPositions = [];
 
 let gameInProgress = false ;
 let shufflingInProgress = false ;
- let cardsRevealed = false ;
+let cardsRevealed = false ;
 
 
 const currentGameStatusElem = document.querySelector('.current-status');
@@ -55,6 +55,8 @@ let score =0;
 
 loadGame();
 
+
+
 function chooseCard(card){
   if(canChooseCard()){
     evaluateCardChoice(card);
@@ -67,7 +69,7 @@ function chooseCard(card){
 
         endRound();
 
-    },3000)
+    },3000);
     cardsRevealed = true;
   }
 }
@@ -109,7 +111,7 @@ function updateStatusElement(elem , display, color ,innerHTML){
 function outputChoiceFeedBack(hit){
     if(hit)
     {
-   updateStatusElement(currentGameStatusElem),"block",winColor, "Correct! Nice Guess!";
+   updateStatusElement(currentGameStatusElem,"block",winColor, "Correct! Nice Guess!");
     }
     else
     {
@@ -120,16 +122,16 @@ function outputChoiceFeedBack(hit){
 function evaluateCardChoice(card){
   if(card.id == queenId){
     updateScore();
-    outputChoiceFeedback(true);
+    outputChoiceFeedBack(true);
   }
  else
  {
-  outputChoiceFeedback(false);
+    outputChoiceFeedBack(false);
  }
 }
 
 function canChooseCard(){
-   return gameinProgress == true && !shufflingInProgress && !cardsRevealed ;
+   return gameInProgress == true && !shufflingInProgress && !cardsRevealed ;
 }
 
 function loadGame() {
@@ -224,7 +226,9 @@ function shuffleCards() {
 
         if (shuffleCount == 500) {
             clearInterval(id);
+            shufflingInProgress = false;
             dealCards();
+            updateStatusElement(currentGameStatusElem,"block" , primaryColor ,"Please click the card that you think is the Queen of Diamonds.." );
         } else {
             shuffleCount++;
         }
@@ -242,7 +246,7 @@ function randomizeCardPositions() {
     const random1 = Math.floor(Math.random() * numCards) + 1;
     const random2 = Math.floor(Math.random() * numCards) + 1;
 
-    const temp = cardPositions[random1 = 1];
+    const temp = cardPositions[random1 - 1];
     cardPositions[random1 - 1] = cardPositions[random2 - 1];
     cardPositions[random2 - 1] = temp;
 
@@ -357,6 +361,13 @@ function createCard(cardItem) {
     addCardToGridCell(cardElem);
 
     initializeCardPositions(cardElem);
+
+    attachClickEventHandlerToCard(cardElem);
+
+}
+
+function attachClickEventHandlerToCard(card){
+    card.addEventListener('click',() => chooseCard(card));
 }
 
 function initializeCardPositions(card) {
