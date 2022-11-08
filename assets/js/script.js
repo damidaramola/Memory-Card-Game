@@ -56,6 +56,17 @@ function chooseCard(){
   }
 }
 
+function outputChoiceFeedBack(hit){
+    if(hit)
+    {
+   updateStatusElement(currentGameStatusElem),"block",winColor, "Correct! Nice Guess!"
+    }
+    else
+    {
+    updateStatusElement(currentGameStatusElem, "block" , loseColor, "Wrong..Hard luck!")
+    }
+}
+
 function evaluateCardChoice(card){
   if(card.id == queenId){
     updateScore();
