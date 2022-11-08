@@ -41,6 +41,7 @@ let shufflingInProgress = false ;
 const currentGameStatusElem = document.querySelector('.current-status')
 const winColor = "green";
 const loseColor = "red";
+const primaryColor ="black"
 
 let roundNum = 0;
 let maxRounds = 4 ;
@@ -156,11 +157,11 @@ function initializeNewRound() {
   roundNum++;
   playGameButtonElem.disabled = true;
   gameInProgress = true ;
-  
+
   shufflingInProgress = true;
   cardsRevealed = false;
 
-  updateStatusElement(currentGameStatusElem , "block", )
+  updateStatusElement(currentGameStatusElem , "block", primaryColor, "Shuffling.." )
 }
 
 function collectCards() {
