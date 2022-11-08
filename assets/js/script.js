@@ -16,6 +16,8 @@ const cardObjectDefined = [{
     }
 ];
 
+
+
 const cardBackImgPath = 'assets/images/card-back-Blue.png';
 
 let cards = [];
@@ -31,7 +33,36 @@ const numCards = cardObjectDefined.length;
 
 let cardPositions = [];
 
+let gameInProgress = false ;
+let shufflingInProgress = false ;
+ let cardsRevealed = false ;
+
 loadGame();
+
+function chooseCard(){
+  if(canChooseCard()){
+    evaluateCardChoice(card)
+    saveGameObjectToLocalStorage(score, roundNum)
+    flipCard(card,false)
+
+    setTimeout(() => {
+        flipCards(false)
+        updateStatusElement(currentGameStatusElem,"block", primaryColor,"Card positions revealed")
+
+        endRound()
+
+    },3000)
+    cardsRevealed = true
+  }
+}
+
+function evaluateCardChoice(card){
+
+}
+
+function canChooseCard(){
+   return gameinProgress == true && !shufflingInProgress && !cardsRevealed ;
+}
 
 function loadGame() {
     createCards();
