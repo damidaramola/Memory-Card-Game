@@ -21,7 +21,7 @@ const cardBackImgPath = 'assets/images/card-back-Blue.png';
 let cards = [];
 
 const playGameButtonElem = document.getElementById('playGame');
-const cardPlacementElem = document.querySelector('.card-placement');
+const cardContainerElem = document.querySelector('.card-placement');
 
 
 const collapsedGridAreaTemplate = '"a a" "a a"';
@@ -40,6 +40,7 @@ playGameButtonElem.addEventListener('click', () => startGame());
 }
 
 function startGame() {
+    
 initializeNewGame();
 startRound();
 }
@@ -49,6 +50,7 @@ function initializeNewGame() {
 }
 
 function startRound() {
+initializeNewRound()   
 collectCards();
 flipCards(true)
 }
