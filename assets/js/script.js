@@ -125,7 +125,8 @@ function calculateScore(){
 
 function updateScore(){
     calculateScore();
-    
+    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`);
+
 }
 
 function updateStatusElement(elem , display, color ,innerHTML){
@@ -166,6 +167,8 @@ function loadGame() {
     createCards();
     cards = document.querySelectorAll('.card');
     playGameButtonElem.addEventListener('click', () => startGame());
+    updateStatusElement(scoreContainerElem,"none");
+    updateStatusElement(roundContainerElem,"none");
 }
 
 function startGame() {
