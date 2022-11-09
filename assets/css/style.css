@@ -3,6 +3,10 @@
     --card-height: 220px;
     --num-cards: 4;
     --card-horizontal-space: 100px;
+    --badge-bg-color: darkgrey;
+    --primary-color: black;
+    --secondary-color: #ffffff;
+
 }
 
 body {
@@ -142,5 +146,8 @@ header{
 }
 
 .badge{
-    
+ background-color: var(--badge-bg-color);
+ color: var(--secondary-color);
+ padding: 2px 10px 3px;
+ border-radius: 15px;
 }
