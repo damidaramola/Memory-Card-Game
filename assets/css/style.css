@@ -161,4 +161,10 @@ header{
  border-radius: 15px;
 }
 
+.card.shuffle-left{
+    transform: translateX(300px) translateY(40px);
+}
 
+.card.shuffle-right{
+    transform: translateX(-350px) translateY(-40px);
+}
