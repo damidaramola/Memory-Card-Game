@@ -51,6 +51,9 @@ const primaryColor = "black";
 let roundNum = 0;
 let maxRounds = 4;
 let score = 0;
+let gameObj ={}
+
+const localStorageGameKey ="HTA"
 
 
 loadGame();
@@ -159,8 +162,24 @@ function loadGame() {
     updateStatusElement(roundContainerElem, "none");
 }
 
-function startGame() {
+function checkForIncompleteGame()
+{
+     const serializedGameObj = getLocalStorageItemValue(localStorageGameKey)
+     if (serializedGameObj){
+        gameObj = gameObjectFromJSON(serializedGameObj)
+        if(gameObj.round>= maxRounds){
+           removeLocalStorageItem(localStorageGameKey)
+        }
+        else{
+            if (confirm('Would you like to continue with your last game?')){
+                score = gameObj.score;
+                round = gameObj.round;
+            }
+        }
+    }
+}
 
+function startGame() {
     initializeNewGame();
     startRound();
 }
