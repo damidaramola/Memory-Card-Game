@@ -96,3 +96,41 @@ main {
 .card-inner.flip-it{
     transform: rotateY(180deg);
 }
+
+header{
+    display: flex ;
+    flex-direction: column ;
+    margin-bottom: 10px;
+}
+
+.header-title-container{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.header-rounder-info-container{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.header-status-info-container,
+.header-button-container,
+.heaader-score-container,
+.header-round-container,
+.header-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-score-container,
+.header-round-container,
+.header-img-container{
+    width: 150px;
+}
+
+header-img{
+    height:75px;
+}
