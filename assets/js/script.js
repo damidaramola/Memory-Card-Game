@@ -16,7 +16,7 @@ const cardObjectDefined = [{
     }
 ];
 
-const queenId = 4 ;
+const queenId = 4;
 
 const cardBackImgPath = 'assets/images/card-back-Blue.png';
 
@@ -33,9 +33,9 @@ const numCards = cardObjectDefined.length;
 
 let cardPositions = [];
 
-let gameInProgress = false ;
-let shufflingInProgress = false ;
-let cardsRevealed = false ;
+let gameInProgress = false;
+let shufflingInProgress = false;
+let cardsRevealed = false;
 
 
 const currentGameStatusElem = document.querySelector('.current-status');
@@ -46,20 +46,20 @@ const roundElem = document.querySelector('.round');
 
 const winColor = "green";
 const loseColor = "red";
-const primaryColor ="black";
+const primaryColor = "black";
 
 let roundNum = 0;
-let maxRounds = 4 ;
-let score =0;
+let maxRounds = 4;
+let score = 0;
 
 
 loadGame();
 
-function gameOver(){
-    updateStatusElement(scoreContainerElem,"none");
-    updateStatusElement(roundContainerElem,"none");
+function gameOver() {
+    updateStatusElement(scoreContainerElem, "none");
+    updateStatusElement(roundContainerElem, "none");
     const gameOverMessage = `Game Over! Final Score - <span class = 'badge'>${score}</span> Click 'Play Game' button to start again`;
-    updateStatusElement(currentGameStatusElem,"block",primaryColor,gameOverMessage);
+    updateStatusElement(currentGameStatusElem, "block", primaryColor, gameOverMessage);
 
     gameInProgress = false;
     playGameButtonElem.disabled = false;
@@ -67,109 +67,96 @@ function gameOver(){
 
 
 function endRound() {
-    setTimeout(()=>{
-        if(roundNum == maxRounds)
-        {
+    setTimeout(() => {
+        if (roundNum == maxRounds) {
             gameOver();
             return
-        }
-        else
-        {
+        } else {
             startRound();
         }
-    },3000);
+    }, 3000);
 }
- 
 
 
 
-function chooseCard(card){
-    if(canChooseCard())
-    {
+
+function chooseCard(card) {
+    if (canChooseCard()) {
         evaluateCardChoice(card)
         saveGameObjectToLocalStorage(score, roundNum)
-        flipCard(card,false)
+        flipCard(card, false)
 
         setTimeout(() => {
             flipCards(false)
-            updateStatusElement(currentGameStatusElem,"block", primaryColor,"Card positions revealed")
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Card positions revealed")
 
             endRound()
 
-        },3000)
+        }, 3000)
         cardsRevealed = true
     }
 }
 
-function calculateScoreToAdd(roundNum){
-    if(roundNum == 1){
+function calculateScoreToAdd(roundNum) {
+    if (roundNum == 1) {
         return 100;
+    } else if (roundNum == 2) {
+        return 50;
+    } else if (roundNum == 3) {
+        return 25;
+    } else {
+        return 10;
     }
-    else if(roundNum ==2 )
-    {
-     return 50;
-    }
-    else if(roundNum == 3){
-    return 25;
-    }
-  else{
-    return 10;
-  }
 }
 
 
-function calculateScore(){
+function calculateScore() {
     const scoreToAdd = calculateScoreToAdd(roundNum);
     score = score + scoreToAdd;
 }
 
-function updateScore(){
+function updateScore() {
     calculateScore();
     updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`);
 
 }
 
-function updateStatusElement(elem , display, color ,innerHTML){
+function updateStatusElement(elem, display, color, innerHTML) {
     elem.style.display = display;
-    if(arguments.length > 2){
+    if (arguments.length > 2) {
         elem.style.color = color;
         elem.innerHTML = innerHTML;
     }
 }
 
-function outputChoiceFeedBack(hit){
-    if(hit)
-    {
-   updateStatusElement(currentGameStatusElem,"block",winColor, "Correct! Nice Guess!");
-    }
-    else
-    {
-    updateStatusElement(currentGameStatusElem, "block" , loseColor, "Wrong..Hard luck!");
+function outputChoiceFeedBack(hit) {
+    if (hit) {
+        updateStatusElement(currentGameStatusElem, "block", winColor, "Correct! Nice Guess!");
+    } else {
+        updateStatusElement(currentGameStatusElem, "block", loseColor, "Wrong..Hard luck!");
     }
 }
 
-function evaluateCardChoice(card){
-  if(card.id == queenId){
-    updateScore();
-    outputChoiceFeedBack(true);
-  }
- else
- {
-    outputChoiceFeedBack(false);
- }
+function evaluateCardChoice(card) {
+    if (card.id == queenId) {
+        updateScore();
+        outputChoiceFeedBack(true);
+    } else {
+        outputChoiceFeedBack(false);
+    }
 }
 
-function canChooseCard()
-{
+function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed;
 }
+
 function loadGame() {
     createCards();
     cards = document.querySelectorAll('.card');
     cardFlyInEffect()
     playGameButtonElem.addEventListener('click', () => startGame());
-    updateStatusElement(scoreContainerElem,"none");
-    updateStatusElement(roundContainerElem,"none");
+    updateStatusElement(scoreContainerElem, "none");
+    updateStatusElement(roundContainerElem, "none");
 }
 
 function startGame() {
@@ -179,19 +166,18 @@ function startGame() {
 }
 
 function initializeNewGame() {
-  score = 0;
-  roundNum= 0;
+    score = 0;
+    roundNum = 0;
 
-  shufflingInProgress = false;
-  updateStatusElement(scoreContainerElem, "flex");
-  updateStatusElement(roundContainerElem, "flex");
+    shufflingInProgress = false;
+    updateStatusElement(scoreContainerElem, "flex");
+    updateStatusElement(roundContainerElem, "flex");
 
-  updateStatusElement(scoreElem,"block",primaryColor,`Score <span class='badge'>${score}</span>`);
-updateStatusElement(roundElem,"block",primaryColor,`Round <span class='badge'>${roundNum}</span>`);
+    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`);
+    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`);
 }
 
-function startRound() 
-{
+function startRound() {
     initializeNewRound();
     collectCards();
     flipCards(true);
@@ -199,15 +185,15 @@ function startRound()
 }
 
 function initializeNewRound() {
-  roundNum++;
-  playGameButtonElem.disabled = true;
+    roundNum++;
+    playGameButtonElem.disabled = true;
 
-  gameInProgress = true ;
-  shufflingInProgress = true;
-  cardsRevealed = false;
+    gameInProgress = true;
+    shufflingInProgress = true;
+    cardsRevealed = false;
 
-  updateStatusElement(currentGameStatusElem , "block", primaryColor, "Shuffling.." );
-  updateStatusElement(roundElem , "block", primaryColor,  `Round <span class='badge'>${roundNum}</span>` );
+    updateStatusElement(currentGameStatusElem, "block", primaryColor, "Shuffling..");
+    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`);
 }
 
 function collectCards() {
@@ -249,18 +235,17 @@ function flipCards(flipToBack) {
     });
 }
 
-function cardFlyInEffect(){
+function cardFlyInEffect() {
     const id = setInterval(flyIn, 3);
-    let cardCount =0;
-    let count= 0 ;
+    let cardCount = 0;
+    let count = 0;
 
-    function flyIn(){
+    function flyIn() {
         count++;
-        if(cardCount == numCards){
+        if (cardCount == numCards) {
             clearInterval(id)
         }
-        if(count == 1 || count == 250 || count == 500 || count == 750)
-        {
+        if (count == 1 || count == 250 || count == 500 || count == 750) {
             cardCount++
             let card = document.getElementById(cardCount)
             card.classList.remove("fly-in")
@@ -268,36 +253,36 @@ function cardFlyInEffect(){
     }
 }
 
-function removeShuffleClasses(){
-    cards.forEach((card) =>{
+function removeShuffleClasses() {
+    cards.forEach((card) => {
         card.classList.remove("shuffle-left");
         card.classList.remove("shuffle-right");
     });
 }
 
-function animateShuffle(shuffleCount){
+function animateShuffle(shuffleCount) {
     const random1 = Math.floor(Math.random() * numCards) + 1;
     const random2 = Math.floor(Math.random() * numCards) + 1;
-    
+
     let card1 = document.getElementById(random1);
     let card2 = document.getElementById(random2);
 
-    if(shuffleCount % 4 == 0){
+    if (shuffleCount % 4 == 0) {
 
-       card1.classList.toggle("shuffle-left")
-       card1.style.zIndex =100;
+        card1.classList.toggle("shuffle-left")
+        card1.style.zIndex = 100;
     }
-    if(shuffleCount % 10 == 0){
-        
+    if (shuffleCount % 10 == 0) {
+
         card2.classList.toggle("shuffle-right")
-        card2.style.zIndex =200;
-     }
+        card2.style.zIndex = 200;
+    }
 }
 
 function shuffleCards() {
     let shuffleCount = 0;
     const id = setInterval(shuffle, 12);
-    
+
 
     function shuffle() {
 
@@ -308,7 +293,7 @@ function shuffleCards() {
             shufflingInProgress = false;
             removeShuffleClasses();
             dealCards();
-            updateStatusElement(currentGameStatusElem,"block" , primaryColor ,"Please click the card that you think is the Queen of Diamonds.." );
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Please click the card that you think is the Queen of Diamonds..");
         } else {
             shuffleCount++;
         }
@@ -338,35 +323,25 @@ function dealCards() {
     transformGridArea(areasTemplate);
 }
 
-function returnGridAreasMappedToCardPos(){
+function returnGridAreasMappedToCardPos() {
     let firstPart = "";
     let secondPart = "";
     let areas = "";
 
     cards.forEach((card, index) => {
-        if(cardPositions[index] == 1)
-        {
+        if (cardPositions[index] == 1) {
             areas = areas + "a ";
-        }
-        else if(cardPositions[index] == 2)
-        {
+        } else if (cardPositions[index] == 2) {
             areas = areas + "b ";
-        }
-        else if (cardPositions[index] == 3)
-        {
+        } else if (cardPositions[index] == 3) {
             areas = areas + "c ";
-        }
-        else if (cardPositions[index] == 4)
-        {
+        } else if (cardPositions[index] == 4) {
             areas = areas + "d ";
         }
-        if (index == 1)
-        {
+        if (index == 1) {
             firstPart = areas.substring(0, areas.length - 1);
             areas = "";
-        }
-        else if (index == 3)
-        {
+        } else if (index == 3) {
             secondPart = areas.substring(0, areas.length - 1);
         }
 
@@ -447,8 +422,8 @@ function createCard(cardItem) {
 
 }
 
-function attachClickEventHandlerToCard(card){
-    card.addEventListener('click',() => chooseCard(card));
+function attachClickEventHandlerToCard(card) {
+    card.addEventListener('click', () => chooseCard(card));
 }
 
 function initializeCardPositions(card) {
@@ -494,4 +469,37 @@ function mapCardIdToGridCell(card) {
     } else if (card.id == 4) {
         return '.card-4';
     }
+}
+
+//local storage functions
+
+function getSerializedObjectAsJSON(obj){
+    return JSON.stringify(obj)
+}
+
+function getObjectFromJSON(json){
+    return JSON.parse(json)
+}
+function updateLocalStorageItem(key, value)
+{
+    localStorage.setItem(key, value)
+}
+function removeLocalStorageItem(key)
+{
+    localStorage.removeItem(key)
+}
+function getLocalStorageItemValue(key)
+{
+    return localStorage.getItem(key)
+}
+
+function updateGameObject(score,round)
+{
+    gameObj.score = score
+    gameObj.round = round
+}
+function saveGameObjectToLocalStorage(score,round)
+{
+    updateGameObject(score, round)
+    updateLocalStorageItem(localStorageGameKey, getSerializedObjectAsJSON(gameObj))
 }
