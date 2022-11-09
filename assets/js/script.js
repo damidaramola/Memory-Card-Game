@@ -248,6 +248,25 @@ function flipCards(flipToBack) {
     });
 }
 
+function animateShuffle(shuffleCount){
+    const random1 = Math.floor(Math.random() * numCards) + 1;
+    const random2 = Math.floor(Math.random() * numCards) + 1;
+    
+    let card1 = document.getElementById(random1);
+    let card2 = document.getElementById(random2);
+
+    if(shuffleCount % 4 == 0){
+
+       card1.classList.toggle("shuffle-left")
+       card1.style.zIndex =100;
+    }
+    if(shuffleCount % 10 == 0){
+        
+        card2.classList.toggle("shuffle-right")
+        card2.style.zIndex =200;
+     }
+}
+
 function shuffleCards() {
     let shuffleCount = 0;
     const id = setInterval(shuffle, 12);
