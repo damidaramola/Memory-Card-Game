@@ -90,11 +90,9 @@ main {
     height: 100%;
 }
 
-.card-back {
+.card-back{
     transform: rotateY(180deg);
 }
-
-
-.card-inner.flip-it {
+.card-inner.flip-it{
     transform: rotateY(180deg);
 }
