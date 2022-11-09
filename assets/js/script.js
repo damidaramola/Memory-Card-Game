@@ -248,6 +248,13 @@ function flipCards(flipToBack) {
     });
 }
 
+function removeShuffleClasses(){
+    cards.forEach((card) =>{
+        card.classList.remove("shuffle-left");
+        card.classList.remove("shuffle-right");
+    });
+}
+
 function animateShuffle(shuffleCount){
     const random1 = Math.floor(Math.random() * numCards) + 1;
     const random2 = Math.floor(Math.random() * numCards) + 1;
@@ -279,6 +286,7 @@ function shuffleCards() {
         if (shuffleCount == 500) {
             clearInterval(id);
             shufflingInProgress = false;
+            removeShuffleClasses();
             dealCards();
             updateStatusElement(currentGameStatusElem,"block" , primaryColor ,"Please click the card that you think is the Queen of Diamonds.." );
         } else {
