@@ -303,13 +303,13 @@ function animateShuffle(shuffleCount) {
 
 function shuffleCards() {
     let shuffleCount = 0;
-    const id = setInterval(shuffle, 12);
+    const id = setInterval(shuffle, 2);
 
 
     function shuffle() {
 
         randomizeCardPositions();
-
+        animateShuffle(shuffleCount)
         if (shuffleCount == 500) {
             clearInterval(id);
             shufflingInProgress = false;
