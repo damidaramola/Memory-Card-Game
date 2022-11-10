@@ -1,3 +1,4 @@
+//file paths of 4 card images used in the game
 const cardObjectDefined = [{
         id: 1,
         imagePath: 'assets/images/king-of-clubs.PNG'
@@ -18,14 +19,15 @@ const cardObjectDefined = [{
 
 const queenId = 4;
 
+//Back image of cards
 const cardBackImgPath = 'assets/images/card-back-Blue.png';
 
 let cards = [];
-
+//reference to start game button in global const
 const playGameButtonElem = document.getElementById('playGame');
 const cardContainerElem = document.querySelector('.card-placement');
 
-
+//causes grid of cards to collapse showing only card 1
 const collapsedGridAreaTemplate = '"a a" "a a"';
 const cardCollectionCellClass = ".card-1";
 
@@ -56,7 +58,7 @@ let gameObj = {}
 
 const localStorageGameKey = "HTA"
 
-
+//Method called when game is first launched
 loadGame();
 
 function gameOver() {
@@ -80,9 +82,6 @@ function endRound() {
         }
     }, 3000);
 }
-
-
-
 
 function chooseCard(card) {
     if (canChooseCard()) {
@@ -181,11 +180,13 @@ function checkForIncompleteGame() {
     }
 }
 
+//Called when user clicks start game button
 function startGame() {
     initializeNewGame();
     startRound();
 }
 
+//initializes new game
 function initializeNewGame() {
     score = 0;
     roundNum = 0;
@@ -199,7 +200,7 @@ function initializeNewGame() {
     updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`);
     updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`);
 }
-
+//called when new round is started
 function startRound() {
     initializeNewRound();
     collectCards();
@@ -207,6 +208,7 @@ function startRound() {
     shuffleCards();
 }
 
+//initializes new round
 function initializeNewRound() {
     roundNum++;
     playGameButtonElem.disabled = true;
@@ -219,6 +221,7 @@ function initializeNewRound() {
     updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`);
 }
 
+//stack cards ontop of one card which is visible
 function collectCards() {
     transformGridArea(collapsedGridAreaTemplate);
     addCardsToGridAreaCell(cardCollectionCellClass);
@@ -383,6 +386,7 @@ function addCardsToAppropriateCell() {
     });
 }
 
+//This function is responsible for creating cards dynamically
 function createCard(cardItem) {
 
     //Div Elements that make up a card 
@@ -453,27 +457,31 @@ function initializeCardPositions(card) {
     cardPositions.push(card.id);
 }
 
+//This function creates html elements
 function createElement(elemType) {
     return document.createElement(elemType);
 }
 
+//This function adds a class to the html element
 function addClassToElement(elem, className) {
     elem.classList.add(className);
 }
-
+//Gives Element a unique id
 function addIdToElement(elem, id) {
     elem.id = id;
 }
 
+//Assigns a path for the relevant image to src attribute of img element
 function addSrcToImageElem(imgElem, src) {
     imgElem.src = src;
 }
 
+//assigns child elements to their parent elements
 function addChildElement(parentElem, childElem) {
     parentElem.appendChild(childElem);
 }
 
-
+//adds the card to the appropriate Grid Cell
 function addCardToGridCell(card) {
     const cardPositionClassName = mapCardIdToGridCell(card);
     const cardPosElem = document.querySelector(cardPositionClassName);
