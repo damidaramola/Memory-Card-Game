@@ -176,7 +176,7 @@ function checkForIncompleteGame() {
         } else {
             if (confirm('Would you like to continue with your last game?')) {
                 score = gameObj.score;
-                round = gameObj.round;
+                roundNum = gameObj.round;
             }
         }
     }
@@ -234,13 +234,13 @@ function transformGridArea(areas) {
     cardContainerElem.style.gridTemplateAreas = areas;
 }
 
-function addCardsToGridAreaCell(cellPositionClassName) {
+function addCardsToGridAreaCell(cellPositionClassName)
+{
     const cellPositionElem = document.querySelector(cellPositionClassName);
 
-    cards.forEach((card, index) => {
+    cards.forEach((card, index) =>{
         addChildElement(cellPositionElem, card);
     });
-
 
 }
 
@@ -255,11 +255,11 @@ function flipCard(card, flipToBack) {
 }
 
 
-function flipCards(flipToBack) {
-    cards.forEach((card, index) => {
+function flipCards(flipToBack){
+    cards.forEach((card,index)=>{
         setTimeout(() => {
-            flipCard(card, flipToBack);
-        }, index * 100);
+            flipCard(card,flipToBack);
+        },index * 100);
     });
 }
 
@@ -356,25 +356,36 @@ function dealCards() {
 }
 
 //Generates new positions for cards after shuffling
-function returnGridAreasMappedToCardPos() {
+function returnGridAreasMappedToCardPos()
+{
     let firstPart = "";
     let secondPart = "";
     let areas = "";
 
     cards.forEach((card, index) => {
-        if (cardPositions[index] == 1) {
+        if(cardPositions[index] == 1)
+        {
             areas = areas + "a ";
-        } else if (cardPositions[index] == 2) {
+        }
+        else if(cardPositions[index] == 2)
+        {
             areas = areas + "b ";
-        } else if (cardPositions[index] == 3) {
+        }
+        else if (cardPositions[index] == 3)
+        {
             areas = areas + "c ";
-        } else if (cardPositions[index] == 4) {
+        }
+        else if (cardPositions[index] == 4)
+        {
             areas = areas + "d ";
         }
-        if (index == 1) {
+        if (index == 1)
+        {
             firstPart = areas.substring(0, areas.length - 1);
             areas = "";
-        } else if (index == 3) {
+        }
+        else if (index == 3)
+        {
             secondPart = areas.substring(0, areas.length - 1);
         }
 
@@ -384,8 +395,6 @@ function returnGridAreasMappedToCardPos() {
 
 
 }
-
-
 
 function addCardsToAppropriateCell() {
     cards.forEach((card) => {
@@ -538,5 +547,6 @@ function updateGameObject(score, round) {
 
 function saveGameObjectToLocalStorage(score, round) {
     updateGameObject(score, round);
-    updateLocalStorageItem(localStorageGameKey, getSerializedObjectAsJSON(gameObj))
+    updateLocalStorageItem(localStorageGameKey, getSerializedObjectAsJSON(gameObj));
 }
+
