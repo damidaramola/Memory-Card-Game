@@ -17,7 +17,7 @@ Queens and diamonds is a simple card guessing game in which th player must guess
 * This screenshot shows the header section with an image of the Queen of diamonds card which the play must pick in order to gain points.
 * A theme of pink is seen in this game while the other cards have different colors.
 
-               ![QandD header] (https://user-images.githubusercontent.com/110638513/200999336-b50ed034-069c-4ec2-afdd-98df82b47ad0.PNG)
+    ![QandD header](https://user-images.githubusercontent.com/110638513/201012091-5e4f1f84-d908-4ca2-ad67-cf767f1189bc.PNG)
 
 ## Four Cards Flying
  * As the page loads, the 4 cards 'fly-in' from the left of the page and into position.
@@ -38,7 +38,7 @@ Once the button is clicked, a score and round counter which awards:
 * 10 points if it is picked on the 4th round
 * No points if the wrong card is picked 
 
-             ![header-start-game-Q D](https://user-images.githubusercontent.com/110638513/201002063-aca90758-8c99-48b0-bce9-ed134eda346e.PNG)
+    ![header-start-game-Q D](https://user-images.githubusercontent.com/110638513/201002063-aca90758-8c99-48b0-bce9-ed134eda346e.PNG)
 
 ## Shuffling
 At the beginning of each round, each card is shuffled for a period of 2 seconds. Once this happens, the positions of the cards become randomized and they are now facing backwards to the player.
