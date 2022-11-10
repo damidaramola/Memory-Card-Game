@@ -115,7 +115,7 @@ main {
 .card-inner.flip-it {
     transform: rotateY(180deg);
 }
-
+/* Style layout of header element and classes */
 header {
     display: flex;
     flex-direction: column;
@@ -128,7 +128,7 @@ header {
 
 }
 
-.header-rounder-info-container {
+.header-round-info-container {
     display: flex;
     justify-content: space-evenly;
 
@@ -172,6 +172,10 @@ header {
     border-radius: 15px;
 }
 
+.score{
+    padding: 18px;
+}
+
 .card.shuffle-left {
     transform: translateX(300px) translateY(40px);
 }
@@ -183,7 +187,7 @@ header {
 .card.fly-in {
     transform: translateY(-1000px) translateX(-600px) rotate(45deg);
 }
-
+/* Stlye media queries for responsive design */
 @media screen and (max-width:600px) {
     .card {
         width: var(--card-width-sm);

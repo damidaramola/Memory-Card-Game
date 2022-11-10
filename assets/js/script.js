@@ -51,6 +51,7 @@ const primaryColor = "black";
 let roundNum = 0;
 let maxRounds = 4;
 let score = 0;
+
 let gameObj = {}
 
 const localStorageGameKey = "HTA"
