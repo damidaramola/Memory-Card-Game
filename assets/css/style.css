@@ -164,7 +164,7 @@ header {
     transform: rotate(-3deg);
 
 }
-
+ /* styling for score count badges */
 .badge {
     background-color: var(--badge-bg-color);
     color: var(--secondary-color);
@@ -204,3 +204,29 @@ header {
     }
 }
 
+/* style play Game button */
+#playGame {
+    font-family: var(--primary-font);
+    font-size: 20px;
+    font-weight: bold;
+    background:  rgb(245, 114, 114);
+    width: 150px;
+    padding:15px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor:pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    --webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    --webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.play-game:hover , .play-game:focus , .play-game:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    --webkit-transform: scale(1.1);
+    transform: scale(1.1);
+
+}
