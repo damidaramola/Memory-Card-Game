@@ -54,9 +54,9 @@ let roundNum = 0;
 let maxRounds = 4;
 let score = 0;
 
-let gameObj = {}
+let gameObj = {};
 
-const localStorageGameKey = "HTA"
+const localStorageGameKey = "HTA";
 
 //Method called when game is first launched
 loadGame();
@@ -76,7 +76,7 @@ function endRound() {
     setTimeout(() => {
         if (roundNum == maxRounds) {
             gameOver();
-            return
+            return;
         } else {
             startRound();
         }
@@ -85,22 +85,23 @@ function endRound() {
 
 function chooseCard(card) {
     if (canChooseCard()) {
-        evaluateCardChoice(card)
+        evaluateCardChoice(card);
 
         saveGameObjectToLocalStorage(score, roundNum);
-        flipCard(card, false)
+        flipCard(card, false);
 
         setTimeout(() => {
-            flipCards(false)
-            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Card positions revealed")
+            flipCards(false);
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Card positions revealed");
 
-            endRound()
+            endRound();
 
-        }, 3000)
-        cardsRevealed = true
+        }, 3000);
+        cardsRevealed = true;
     }
 }
 
+//Calulates score after each round
 function calculateScoreToAdd(roundNum) {
     if (roundNum == 1) {
         return 100;
@@ -150,6 +151,7 @@ function evaluateCardChoice(card) {
     }
 }
 
+//cards can only be chosen after shuffling takes place
 function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed;
 }
@@ -157,20 +159,20 @@ function canChooseCard() {
 function loadGame() {
     createCards();
     cards = document.querySelectorAll('.card');
-    cardFlyInEffect()
+    cardFlyInEffect();
     playGameButtonElem.addEventListener('click', () => startGame());
     updateStatusElement(scoreContainerElem, "none");
     updateStatusElement(roundContainerElem, "none");
 }
 
 
-
+//If game is left unfinished, notification will allow player to continue
 function checkForIncompleteGame() {
-    const serializedGameObj = getLocalStorageItemValue(localStorageGameKey)
+    const serializedGameObj = getLocalStorageItemValue(localStorageGameKey);
     if (serializedGameObj) {
-        gameObj = getObjectFromJSON(serializedGameObj)
+        gameObj = getObjectFromJSON(serializedGameObj);
         if (gameObj.round >= maxRounds) {
-            removeLocalStorageItem(localStorageGameKey)
+            removeLocalStorageItem(localStorageGameKey);
         } else {
             if (confirm('Would you like to continue with your last game?')) {
                 score = gameObj.score;
@@ -191,7 +193,7 @@ function initializeNewGame() {
     score = 0;
     roundNum = 0;
 
-    checkForIncompleteGame()
+    checkForIncompleteGame();
 
     shufflingInProgress = false;
     updateStatusElement(scoreContainerElem, "flex");
@@ -242,6 +244,7 @@ function addCardsToGridAreaCell(cellPositionClassName) {
 
 }
 
+// flips cards once card is chosen
 function flipCard(card, flipToBack) {
     const innerCardElem = card.firstChild;
     if (flipToBack && !innerCardElem.classList.contains('flip-it')) {
@@ -252,15 +255,15 @@ function flipCard(card, flipToBack) {
 }
 
 
-
 function flipCards(flipToBack) {
     cards.forEach((card, index) => {
         setTimeout(() => {
-            flipCard(card, flipToBack)
+            flipCard(card, flipToBack);
         }, index * 100);
     });
 }
 
+//Allow cards to fly in once page loads
 function cardFlyInEffect() {
     const id = setInterval(flyIn, 3);
     let cardCount = 0;
@@ -269,12 +272,12 @@ function cardFlyInEffect() {
     function flyIn() {
         count++;
         if (cardCount == numCards) {
-            clearInterval(id)
+            clearInterval(id);
         }
         if (count == 1 || count == 250 || count == 500 || count == 750) {
-            cardCount++
-            let card = document.getElementById(cardCount)
-            card.classList.remove("fly-in")
+            cardCount++;
+            let card = document.getElementById(cardCount);
+            card.classList.remove("fly-in");
         }
     }
 }
@@ -286,6 +289,7 @@ function removeShuffleClasses() {
     });
 }
 
+//Allows shuffle of cards to be animated
 function animateShuffle(shuffleCount) {
     const random1 = Math.floor(Math.random() * numCards) + 1;
     const random2 = Math.floor(Math.random() * numCards) + 1;
@@ -295,25 +299,26 @@ function animateShuffle(shuffleCount) {
 
     if (shuffleCount % 4 == 0) {
 
-        card1.classList.toggle("shuffle-left")
+        card1.classList.toggle("shuffle-left");
         card1.style.zIndex = 100;
     }
     if (shuffleCount % 10 == 0) {
 
-        card2.classList.toggle("shuffle-right")
+        card2.classList.toggle("shuffle-right");
         card2.style.zIndex = 200;
     }
 }
 
+//shuffle cards for 2 seconds
 function shuffleCards() {
     let shuffleCount = 0;
     const id = setInterval(shuffle, 2);
 
-
+//randomize position of cards when shuffled
     function shuffle() {
 
         randomizeCardPositions();
-        animateShuffle(shuffleCount)
+        animateShuffle(shuffleCount);
         if (shuffleCount == 500) {
             clearInterval(id);
             shufflingInProgress = false;
@@ -343,12 +348,14 @@ function randomizeCardPositions() {
 
 }
 
+//Restores Grid to 4 grid cells after cards are shuffled
 function dealCards() {
     addCardsToAppropriateCell();
     const areasTemplate = returnGridAreasMappedToCardPos();
     transformGridArea(areasTemplate);
 }
 
+//Generates new positions for cards after shuffling
 function returnGridAreasMappedToCardPos() {
     let firstPart = "";
     let secondPart = "";
@@ -401,7 +408,7 @@ function createCard(cardItem) {
 
     //add class and id to card element
     addClassToElement(cardElem, 'card');
-    addClassToElement(cardElem, 'fly-in')
+    addClassToElement(cardElem, 'fly-in');
     addIdToElement(cardElem, cardItem.id);
 
     //add class to inner card element 
@@ -505,31 +512,31 @@ function mapCardIdToGridCell(card) {
 //local storage functions
 
 function getSerializedObjectAsJSON(obj) {
-    return JSON.stringify(obj)
+    return JSON.stringify(obj);
 }
 
 function getObjectFromJSON(json) {
-    return JSON.parse(json)
+    return JSON.parse(json);
 }
 
 function updateLocalStorageItem(key, value) {
-    localStorage.setItem(key, value)
+    localStorage.setItem(key, value);
 }
 
 function removeLocalStorageItem(key) {
-    localStorage.removeItem(key)
+    localStorage.removeItem(key);
 }
 
 function getLocalStorageItemValue(key) {
-    return localStorage.getItem(key)
+    return localStorage.getItem(key);
 }
 
 function updateGameObject(score, round) {
-    gameObj.score = score
-    gameObj.round = round
+    gameObj.score = score;
+    gameObj.round = round;
 }
 
 function saveGameObjectToLocalStorage(score, round) {
-    updateGameObject(score, round)
+    updateGameObject(score, round);
     updateLocalStorageItem(localStorageGameKey, getSerializedObjectAsJSON(gameObj))
 }
