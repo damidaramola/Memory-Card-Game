@@ -17,7 +17,7 @@ Queens and diamonds is a simple card guessing game in which th player must guess
 * This screenshot shows the header section with an image of the Queen of diamonds card which the play must pick in order to gain points.
 * A theme of pink is seen in this game while the other cards have different colors.
 
-               ![QandD header](https://user-images.githubusercontent.com/110638513/200999336-b50ed034-069c-4ec2-afdd-98df82b47ad0.PNG)
+               ![QandD header] (https://user-images.githubusercontent.com/110638513/200999336-b50ed034-069c-4ec2-afdd-98df82b47ad0.PNG)
 
 ## Four Cards Flying
  * As the page loads, the 4 cards 'fly-in' from the left of the page and into position.
